@@ -8,6 +8,7 @@ const Artist = (function() {
 			this.events = events
 			this.topTracks = topTracks
 			this.picture = picture
+			store.artists.push(this)
 		}
 	}
 })
