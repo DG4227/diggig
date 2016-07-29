@@ -1,9 +1,14 @@
-const Artist = (function() { 
+const Artist = (function() {
 
 
-	return class Artist{
+	return class {
 		// getting from both bandsintown and spotify; need id for top tracks
-		constructor(name, events, topTracks, picture)
+		constructor(name, events, topTracks, picture) {
+			this.name = name
+			this.events = events
+			this.topTracks = topTracks
+			this.picture = picture
+		}
 	}
 })
 
@@ -18,10 +23,10 @@ const Artist = (function() {
 
 
 
-// const Task = (function() { 
+// const Task = (function() {
 
 // 	return class Task {
-// 		constructor(description, priority, list) { 
+// 		constructor(description, priority, list) {
 // 			this.description = description;
 // 			this.priority = priority;
 // 			this.list = list;

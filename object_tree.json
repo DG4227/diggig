@@ -1,0 +1,36 @@
+
+  {
+    "id": 12205642,
+    "title": "Paul Simon @ O2 Arena in Prague, Czech Republic",
+    "datetime": "2016-10-17T19:00:00",
+    "formatted_datetime": "Monday, October 17, 2016 at 7:00PM",
+    "formatted_location": "Prague, Czech Republic",
+    "ticket_url": "http://www.bandsintown.com/event/12205642/buy_tickets?app_id=diggig&artist=Paul+Simon&came_from=67",
+    "ticket_type": "Tickets",
+    "ticket_status": "available",
+    "on_sale_datetime": "2016-06-01T16:00:00",
+    "facebook_rsvp_url": "http://www.bandsintown.com/event/12205642?app_id=diggig&artist=Paul+Simon&came_from=67",
+    "description": "Paul Simon",
+    "artists": [
+      {
+        "name": "Paul Simon",
+        "mbid": "05517043-ff78-4988-9c22-88c68588ebb9",
+        "image_url": "https://s3.amazonaws.com/bit-photos/large/6505297.jpeg",
+        "thumb_url": "https://s3.amazonaws.com/bit-photos/thumb/6505297.jpeg",
+        "facebook_tour_dates_url": "http://www.bandsintown.com/PaulSimon/facebookapp?came_from=67",
+        "facebook_page_url": "https://www.facebook.com/paulsimon",
+        "tracker_count": 350515,
+        "url": "PaulSimon",
+        "website": ""
+      }
+    ],
+    "venue": {
+      "name": "O2 Arena",
+      "place": "O2 Arena",
+      "city": "Prague",
+      "region": "Czech Republic",
+      "country": "Czech Republic",
+      "latitude": 50.118729,
+      "longitude": 14.50591
+    }
+  },
