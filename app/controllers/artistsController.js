@@ -5,6 +5,9 @@ function artistController(spotifyArtistData) {
   var artistImg = spotifyArtistData.images[1].url
   var newArtist = new Artist(artistName,artistGenres,artistImg)
   displayAllEvents()
+  displayPlaylist()
+  // # A continuation from this ajax bullshit
+
 }
 
 //SHOW EVENTS FROM BANDS IN TOWN
@@ -22,3 +25,8 @@ function displayEvent(event){
 function addContent(html){
   $("#eventsInfo").append(html+"<br>")
 }
+
+function displayPlaylist(){
+  $('#topTracks').append(`<iframe src="https://embed.spotify.com/?uri=${spotifyArtistData.uri}" width="100%" height="380" frameborder="0" allowtransparency="true"></iframe>`)
+}
+

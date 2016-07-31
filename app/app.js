@@ -57,7 +57,6 @@ function spotifyIdAJAX(artist) {
       spotifyArtistData = data.artists.items[0]
       spotifyArtistId = spotifyArtistData.id
       spotifyArtistInfoAJAX(spotifyArtistId)
-      // artistConstructor(spotifyArtistData)
     },
     error: function() {
 
@@ -84,12 +83,13 @@ function bandsInTownAJAX(artist) {
 function spotifyArtistInfoAJAX(id) {
   return $.ajax({
     method: "GET",
-    url: `https://api.spotify.com/v1/artists/${id}/albums`,
+    url: `https://api.spotify.com/v1/artists/${id}/top-tracks?country=US`,
     success: function(data) {
-      spotifyAlbumData = data
+      spotifyTopSongs = data
     },
     error: function() {
 
     }
   })
 }
+

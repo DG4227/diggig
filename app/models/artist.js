@@ -11,7 +11,17 @@ const Artist = (function() {
 			this.picture = picture
 			store.artists.push(this)
 		}
+
+		displaySong(song) {
+			$("#topTracks").append(`<p> ${song.name} </p>`)
+		}
+
+		displayTopSongs(){
+			var songs = spotifyTopSongs.tracks
+			songs.forEach(displaySong)
+		}
 	}
+
 })()
 
 
