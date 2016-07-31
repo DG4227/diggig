@@ -34,9 +34,10 @@ function getArtistData(artist) {
   spotifyIdAJAX(artist)
   bandsInTownAJAX(artist)
   $(document).ajaxStop(function () {
-    artistConstructor()
-    eventConstructor()
-    albumConstructor()
+    // artistConstructor()
+    // eventConstructor()
+    // albumConstructor()
+    // This where all the data from the AJAX calls will funnel into and kick off the creation of instances in their respective controllers
   });
 }
 
