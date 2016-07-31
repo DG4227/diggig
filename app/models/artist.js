@@ -2,7 +2,7 @@ const Artist = (function() {
 
 
 	return class {
-		// getting from both bandsintown and spotify; need id for top tracks
+		// getting from both bandsßintown and spotify; need id for top tracks
 		constructor(name, events, topTracks, picture) {
 			this.name = name
 			this.events = events
