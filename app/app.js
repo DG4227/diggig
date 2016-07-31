@@ -27,18 +27,8 @@ function fadeLandingOnLoad() {
 // AJAX FUNCTIONS
 
 function getArtistData(artist) {
-  var artistId
-  var artistData
-  var bitData
-  var spotifyArtistData
+  var artistId, artistData, bitData, artistTopTracks
   spotifyIdAJAX(artist)
-  $(document).ajaxStop(function () {
-    debugger
-    // artistConstructor()
-    // eventConstructor()
-    // albumConstructor()
-    // This where all the data from the AJAX calls will funnel into and kick off the creation of instances in their respective controllers
-  });
 }
 
 function spotifyIdAJAX(artist) {
@@ -46,14 +36,44 @@ function spotifyIdAJAX(artist) {
     method: "GET",
     url: `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`,
     success: function(data) {
-      if (data.artists.total != 0) {
-        artistId = data.artists.items[0].id
-        artistData = data
-        spotifyArtistInfoAJAX(artistId)
-        bandsInTownAJAX(artist)
-      } else {
-        artistId = null
-      }
+      setSpotifyIdIfExists(data)
+    },
+    error: function() {
+
+    }
+  })
+}
+
+function setSpotifyIdIfExists(data) {
+  if (data.artists.total > 0) {
+    artistId = data.artists.items[0].id
+    spotifyArtistInfoAJAX(artistId)
+  } else {
+    artistId = null
+  }
+}
+
+function spotifyArtistInfoAJAX(id) {
+  return $.ajax({
+    method: "GET",
+    url: `https://api.spotify.com/v1/artists/${id}/albums`,
+    success: function(data) {
+      artistData = data
+      spotifyArtistTopTracksAJAX(id)
+    },
+    error: function() {
+
+    }
+  })
+}
+
+function spotifyArtistTopTracksAJAX(id) {
+  return $.ajax({
+    method: "GET",
+    url: `https://api.spotify.com/v1/artists/${id}/top-tracks?country=US`,
+    success: function(data) {
+      artistTopTracks = data
+      bandsInTownAJAX(data.tracks[0].artists[0].name)
     },
     error: function() {
 
@@ -69,6 +89,7 @@ function bandsInTownAJAX(artist) {
       dataType: 'jsonp',
       success: function(data) {
         bitData = data
+        ajaxDataSendOff()
       },
       error: function() {
 
@@ -76,16 +97,6 @@ function bandsInTownAJAX(artist) {
   })
 }
 
-
-function spotifyArtistInfoAJAX(id) {
-  return $.ajax({
-    method: "GET",
-    url: `https://api.spotify.com/v1/artists/${id}/albums`,
-    success: function(data) {
-      spotifyArtistData = data
-    },
-    error: function() {
-
-    }
-  })
+function ajaxDataSendOff() {
+  debugger
 }
