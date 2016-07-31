@@ -1,21 +1,27 @@
+const store = {
+  artists:[],
+  events:[]
+}
+
+
 $(function(){
   // On Page Load Effects
   fadeLandingOnLoad()
-
   // Event listeners
-  subtmitArtistSearch()
+  submitArtistSearch()
+  // Create new artist
 
-
-})
+}).done(artistConstructor())
 
 // EVENT LISTERNERS
-function subtmitArtistSearch() {
+function submitArtistSearch() {
     $('input:submit').on('click', function(event) {
       event.preventDefault()
       let artist_name = $('#artist_name').val()
       getArtistData(artist_name)
     })
 }
+
 
 
 // ELEMENT FUNCTIONS
@@ -30,7 +36,7 @@ function getArtistData(artist) {
   var artistId
   var artistData
   var bitData
-  var spotifyArtistData
+  // var spotifyArtistData
   spotifyIdAJAX(artist)
   bandsInTownAJAX(artist)
   $(document).ajaxStop(function () {
@@ -46,9 +52,9 @@ function spotifyIdAJAX(artist) {
     method: "GET",
     url: `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`,
     success: function(data) {
-      artistId = data.artists.items[0].id
-      artistData = data
-      spotifyArtistInfoAJAX(artistId)
+      spotifyArtistData = data.artists.items[0]
+      spotifyArtistId = spotifyArtistData.id
+      spotifyArtistInfoAJAX(spotifyArtistId)
     },
     error: function() {
 
@@ -77,10 +83,21 @@ function spotifyArtistInfoAJAX(id) {
     method: "GET",
     url: `https://api.spotify.com/v1/artists/${id}/albums`,
     success: function(data) {
-      spotifyArtistData = data
+      spotifyAlbumData = data
+      debugger
     },
     error: function() {
 
     }
   })
+}
+
+
+function artistConstructor() {
+  let artistName = spotifyArtistData.name
+  let artistGenres = spotifyArtistData.genres.join(", ")
+  let artistImg = spotifyArtistData.images[1].url
+  var newArtist = new Artist(artistName,artistGenres,artistImg)
+
+  // # A continuation from this ajax bullshit
 }
