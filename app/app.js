@@ -19,6 +19,7 @@ function submitArtistSearch() {
       event.preventDefault()
       let artist_name = $('#artist_name').val()
       getArtistData(artist_name)
+      // debugger
     })
 }
 
@@ -57,7 +58,6 @@ function spotifyIdAJAX(artist) {
       spotifyArtistData = data.artists.items[0]
       spotifyArtistId = spotifyArtistData.id
       spotifyArtistInfoAJAX(spotifyArtistId)
-      // artistConstructor(spotifyArtistData)
     },
     error: function() {
 
@@ -84,9 +84,9 @@ function bandsInTownAJAX(artist) {
 function spotifyArtistInfoAJAX(id) {
   return $.ajax({
     method: "GET",
-    url: `https://api.spotify.com/v1/artists/${id}/albums`,
+    url: `https://api.spotify.com/v1/artists/${id}/top-tracks?country=US`,
     success: function(data) {
-      spotifyAlbumData = data
+      spotifyTopSongs = data
     },
     error: function() {
 
@@ -95,15 +95,4 @@ function spotifyArtistInfoAJAX(id) {
 }
 
 
-function artistConstructor() {
-  let artistName = spotifyArtistData.name
-  let artistGenres = spotifyArtistData.genres.join(", ")
-  let artistImg = spotifyArtistData.images[1].url
-  var newArtist = new Artist(artistName,artistGenres,artistImg)
 
-  // # A continuation from this ajax bullshit
-}
-
-function displayAlbums(){
-
-}
