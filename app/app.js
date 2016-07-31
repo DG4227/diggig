@@ -32,8 +32,8 @@ function getArtistData(artist) {
   var bitData
   var spotifyArtistData
   spotifyIdAJAX(artist)
-  bandsInTownAJAX(artist)
   $(document).ajaxStop(function () {
+    debugger
     // artistConstructor()
     // eventConstructor()
     // albumConstructor()
@@ -46,9 +46,14 @@ function spotifyIdAJAX(artist) {
     method: "GET",
     url: `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`,
     success: function(data) {
-      artistId = data.artists.items[0].id
-      artistData = data
-      spotifyArtistInfoAJAX(artistId)
+      if (data.artists.total != 0) {
+        artistId = data.artists.items[0].id
+        artistData = data
+        spotifyArtistInfoAJAX(artistId)
+        bandsInTownAJAX(artist)
+      } else {
+        artistId = null
+      }
     },
     error: function() {
 
