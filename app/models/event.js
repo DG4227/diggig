@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const Event = (function() {
 
 

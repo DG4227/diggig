@@ -2,16 +2,17 @@ const Artist = (function() {
 
 
 	return class {
-		// getting from both bandsintown and spotify; need id for top tracks
-		constructor(name, events, topTracks, picture) {
+		// getting from both bandsßintown and spotify; need id for top tracks
+		constructor(name,genres,picture,events,topTracks) {
 			this.name = name
+			this.genres = genres
 			this.events = events
 			this.topTracks = topTracks
 			this.picture = picture
 			store.artists.push(this)
 		}
 	}
-})
+})()
 
 
 

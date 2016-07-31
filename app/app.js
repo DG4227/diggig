@@ -1,48 +1,95 @@
 const store = {
   artists:[],
-  events:[],
+  events:[]
 }
 
-function logResults(json){
-  console.log(json);
-}
-
-$(function(){ // on document ready,
-  $('input:submit').on('click', function(event){ //attach a listener to my submit, such that on click
-    var artist_name
-    event.preventDefault(); // we prevent default
-    artist_name = $('#artist_name').val() // we get the artist name
-
-    $.ajax({
-      method: "GET",
-      url: "http://api.bandsintown.com/artists/" + artist_name + "/events.json?api_version=2.0&app_id=diggig",
-      dataType: "jsonp",
-      jsonpCallback: "logResults"
-    }).done(function(data){
-      data.forEach(function(element){
-        event_title = element.title
-        event_dateTime = element.datatime
-        event_fbUrl = element.facebook_rsvp_url
-      })
-    });
-
-    $.ajax({
-      method: "GET",
-      url: `https://api.spotify.com/v1/search?q=${artist_name}&type=artist`
-    }).done(function(data){
-      return artist_data_1 = data.artists.items[0]
-      artist_id = artist_data_1.id
-      // artist_genre = artist_data_1.genres //=>["dance pop", "pop", "r&b", "urban contemporary"]
-      // artist_img = artist_data_1.images[2].url
-    });
-
-    return $.ajax({
-      method:"GET",
-      url: `https://api.spotify.com/v1/artists/${artist_id}/top-tracks?country=US`
-    }).done(function(data){
-      artist_data_2 = data
-      return artist_data_2
-      debugger
-    })
-  })
+$(function(){
+  // On Page Load Effects
+  fadeLandingOnLoad()
+  // Event listeners
+  submitArtistSearch()
+  // Create new artist
 })
+
+// EVENT LISTERNERS
+function submitArtistSearch() {
+    $('input:submit').on('click', function(event) {
+      // $("#content").html("")
+      event.preventDefault()
+      let artist_name = $('#artist_name').val()
+      getArtistData(artist_name)
+      $('#artist_name').val("")
+    })
+}
+
+// ELEMENT FUNCTIONS
+
+function fadeLandingOnLoad() {
+  $('#brand').hide().fadeIn(2000)
+}
+
+// AJAX FUNCTIONS
+
+function getArtistData(artist) {
+  var artistId
+  var artistData
+  var bitData
+  // var spotifyArtistData
+  spotifyIdAJAX(artist)
+  bandsInTownAJAX(artist)
+  $(document).ajaxStop(function () {
+    if(spotifyArtistData != undefined){
+      artistController(spotifyArtistData)
+      }
+    else{
+      throw "Artist not found"}
+    // eventConstructor()
+    // albumConstructor()
+    // This where all the data from the AJAX calls will funnel into and kick off the creation of instances in their respective controllers
+  });
+}
+
+function spotifyIdAJAX(artist) {
+  return $.ajax({
+    method: "GET",
+    url: `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`,
+    success: function(data) {
+      spotifyArtistData = data.artists.items[0]
+      spotifyArtistId = spotifyArtistData.id
+      spotifyArtistInfoAJAX(spotifyArtistId)
+      // artistConstructor(spotifyArtistData)
+    },
+    error: function() {
+
+    }
+  })
+}
+
+function bandsInTownAJAX(artist) {
+    return $.ajax({
+      method: "GET",
+      url: "http://api.bandsintown.com/artists/" + artist + "/events.json?api_version=2.0&app_id=diggig",
+      crossDomain: true,
+      dataType: 'jsonp',
+      success: function(data) {
+        bitData = data
+      },
+      error: function() {
+
+      }
+  })
+}
+
+
+function spotifyArtistInfoAJAX(id) {
+  return $.ajax({
+    method: "GET",
+    url: `https://api.spotify.com/v1/artists/${id}/albums`,
+    success: function(data) {
+      spotifyAlbumData = data
+    },
+    error: function() {
+
+    }
+  })
+}
