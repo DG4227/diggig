@@ -27,7 +27,11 @@ function fadeLandingOnLoad() {
 // AJAX FUNCTIONS
 
 function getArtistData(artist) {
-  var artistId, artistData, bitData, artistTopTracks
+  var artistId
+  var artistIdData
+  var albumData
+  var bitData
+  var artistTopTracks
   spotifyIdAJAX(artist)
 }
 
@@ -47,6 +51,7 @@ function spotifyIdAJAX(artist) {
 function setSpotifyIdIfExists(data) {
   if (data.artists.total > 0) {
     artistId = data.artists.items[0].id
+    artistIdData = data
     spotifyArtistInfoAJAX(artistId)
   } else {
     artistId = null
@@ -58,7 +63,7 @@ function spotifyArtistInfoAJAX(id) {
     method: "GET",
     url: `https://api.spotify.com/v1/artists/${id}/albums`,
     success: function(data) {
-      artistData = data
+      albumData= data
       spotifyArtistTopTracksAJAX(id)
     },
     error: function() {
@@ -98,5 +103,6 @@ function bandsInTownAJAX(artist) {
 }
 
 function ajaxDataSendOff() {
+  // artistConstructor(albumData)
   debugger
 }
