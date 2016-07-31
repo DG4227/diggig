@@ -11,7 +11,7 @@ $(function(){
   submitArtistSearch()
   // Create new artist
 
-}).done(artistConstructor())
+})
 
 // EVENT LISTERNERS
 function submitArtistSearch() {
@@ -21,8 +21,6 @@ function submitArtistSearch() {
       getArtistData(artist_name)
     })
 }
-
-
 
 // ELEMENT FUNCTIONS
 
@@ -40,7 +38,11 @@ function getArtistData(artist) {
   spotifyIdAJAX(artist)
   bandsInTownAJAX(artist)
   $(document).ajaxStop(function () {
-    // artistConstructor()
+    if(spotifyArtistData != undefined){
+      artistConstructor(spotifyArtistData
+      )}
+    else{
+      throw "Artist not found"}
     // eventConstructor()
     // albumConstructor()
     // This where all the data from the AJAX calls will funnel into and kick off the creation of instances in their respective controllers
@@ -55,6 +57,7 @@ function spotifyIdAJAX(artist) {
       spotifyArtistData = data.artists.items[0]
       spotifyArtistId = spotifyArtistData.id
       spotifyArtistInfoAJAX(spotifyArtistId)
+      // artistConstructor(spotifyArtistData)
     },
     error: function() {
 
@@ -84,7 +87,6 @@ function spotifyArtistInfoAJAX(id) {
     url: `https://api.spotify.com/v1/artists/${id}/albums`,
     success: function(data) {
       spotifyAlbumData = data
-      debugger
     },
     error: function() {
 
@@ -100,4 +102,8 @@ function artistConstructor() {
   var newArtist = new Artist(artistName,artistGenres,artistImg)
 
   // # A continuation from this ajax bullshit
+}
+
+function displayAlbums(){
+
 }

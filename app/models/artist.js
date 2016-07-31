@@ -12,7 +12,7 @@ const Artist = (function() {
 			store.artists.push(this)
 		}
 	}
-})
+})()
 
 
 
