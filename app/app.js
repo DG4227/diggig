@@ -3,22 +3,22 @@ const store = {
   events:[]
 }
 
-
 $(function(){
   // On Page Load Effects
   fadeLandingOnLoad()
   // Event listeners
   submitArtistSearch()
   // Create new artist
-
 })
 
 // EVENT LISTERNERS
 function submitArtistSearch() {
     $('input:submit').on('click', function(event) {
+      // $("#content").html("")
       event.preventDefault()
       let artist_name = $('#artist_name').val()
       getArtistData(artist_name)
+      $('#artist_name').val("")
     })
 }
 
@@ -39,8 +39,8 @@ function getArtistData(artist) {
   bandsInTownAJAX(artist)
   $(document).ajaxStop(function () {
     if(spotifyArtistData != undefined){
-      artistConstructor(spotifyArtistData
-      )}
+      artistController(spotifyArtistData)
+      }
     else{
       throw "Artist not found"}
     // eventConstructor()
@@ -92,18 +92,4 @@ function spotifyArtistInfoAJAX(id) {
 
     }
   })
-}
-
-
-function artistConstructor() {
-  let artistName = spotifyArtistData.name
-  let artistGenres = spotifyArtistData.genres.join(", ")
-  let artistImg = spotifyArtistData.images[1].url
-  var newArtist = new Artist(artistName,artistGenres,artistImg)
-
-  // # A continuation from this ajax bullshit
-}
-
-function displayAlbums(){
-
 }

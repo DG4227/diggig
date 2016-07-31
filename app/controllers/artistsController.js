@@ -1,24 +1,25 @@
-function artistConstructor(spotifyArtistData) {
+function artistController(spotifyArtistData) {
   var artistName = spotifyArtistData.name
   var artistGenres = spotifyArtistData.genres.join(", ")
   var artistImg = spotifyArtistData.images[1].url
   var newArtist = new Artist(artistName,artistGenres,artistImg)
-  displayArtistInfo(newArtist)
-  // # A continuation from this ajax bullshit
+  displayAllEvents()
 }
 
 
-function displayArtistInfo(newArtist){
-  let info = document.createElement("p")
-  let photo = document.createElement("img")
-  info.textContent = newArtist.name
-  $(".details").append(info)
+
+//SHOW EVENTS FROM BANDS IN TOWN
+function displayAllEvents(){
+  addContent(`<h3>Recent Tour Dates</h3>`)
+  bitData.forEach((event)=>displayEvent(event))
 }
 
-function displayAlbums(){
-
+function displayEvent(event){
+  addContent(`<b>${event.title}</b>`)
+  addContent(event.formatted_datetime)
+  addContent(`<a href="${event.facebook_rsvp_url}">RSVP on Facebook</a><p>`)
 }
 
-function displayEvents(){
-
+function addContent(html){
+  $("#eventsInfo").append(html+"<br>")
 }

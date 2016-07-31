@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-	<link rel="stylesheet" href="css/stylesheet.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<title>DigGig - Find shows for the music you dig!</title>
 	<script src="lib/node_modules/jquery/dist/jquery.js"></script>
   <script src="app/app.js"></script>
@@ -16,23 +16,32 @@
 
 	</div>
   <h1 id="brand">DigGig</h1>
+  <div class='container' id="searchBar" height='100%'>
+  	<div class="wrapper">
+  		<div class="details">
+  		   <form action="">
+  		     <div class='name '>
+  		       <label for="name">Search an artist: </label>
+  		       <input id='artist_name' class='input input_name' type="text" > <input type="submit">
+  		     </div>
+  		   </form>
+  		</div>
+  	</div>
+  </div>
+<div id="content">
+
+<div class = 'container' id='artistInfo' style="background-color:black;">
+  ARTIST INFO HERE
+</div>
+<div class = 'container' id='topTracks' style="background-color:white;">
+  TOP TRACKS HERE
+</div>
+<font color="FFFFFF">
+<div class = 'container' id='eventsInfo' style="background-color:black;">
 
 
-	<div class="wrapper">
-		<div class="details">
-			<div>Choose an artist</div>
-
-		   <form action="">
-		     <div class='name '>
-		       <label for="name">Artist Name</label>
-		       <input id='artist_name' class='input input_name' type="text" >
-		     </div>
-		     <input type="submit">
-		   </form>
-		</div>
-	</div>
-
-   <div class="images">
-   </div>
+</div>
+</font>
+</div>
 </body>
 </html>
