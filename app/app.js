@@ -10,11 +10,11 @@ $(function(){
 
 // EVENT LISTERNERS
 function subtmitArtistSearch() {
-    $('input:submit').on('click', function(event) {
-      event.preventDefault()
-      let artist_name = $('#artist_name').val()
-      getArtistData(artist_name)
-    })
+  $('input:submit').on('click', function(event) {
+    event.preventDefault()
+    let artist_name = $('#artist_name').val()
+    getArtistData(artist_name)
+  })
 }
 
 
@@ -51,7 +51,7 @@ function spotifyIdAJAX(artist) {
 function setSpotifyIdIfExists(data) {
   if (data.artists.total > 0) {
     artistId = data.artists.items[0].id
-    artistIdData = data
+    artistIdData = data.artists.items[0]
     spotifyArtistInfoAJAX(artistId)
   } else {
     artistId = null
@@ -63,7 +63,7 @@ function spotifyArtistInfoAJAX(id) {
     method: "GET",
     url: `https://api.spotify.com/v1/artists/${id}/albums`,
     success: function(data) {
-      albumData= data
+      albumData= data.items
       spotifyArtistTopTracksAJAX(id)
     },
     error: function() {
@@ -77,7 +77,7 @@ function spotifyArtistTopTracksAJAX(id) {
     method: "GET",
     url: `https://api.spotify.com/v1/artists/${id}/top-tracks?country=US`,
     success: function(data) {
-      artistTopTracks = data
+      artistTopTracks = data.tracks
       bandsInTownAJAX(data.tracks[0].artists[0].name)
     },
     error: function() {
@@ -103,6 +103,5 @@ function bandsInTownAJAX(artist) {
 }
 
 function ajaxDataSendOff() {
-  // artistConstructor(albumData)
-  debugger
+  artistConstructor(artistIdData, albumData, artistTopTracks, bitData)
 }
