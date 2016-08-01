@@ -1,22 +1,48 @@
+const store = {
+  artists:[],
+  events:[]
+}
+
 $(function(){
   // On Page Load Effects
   fadeLandingOnLoad()
-
   // Event listeners
-  subtmitArtistSearch()
 
-  $('#fullpage').fullpage()
+
+  // $('#fullpage').fullpage()
+
+  $('a[href="#search"]').on('click', function(event) {
+    event.preventDefault();
+    $('#search').addClass('open');
+    $('#search > form > input[type="search"]').focus();
+  });
+
+  $('#search, #search button.close').on('click keyup', function(event) {
+    if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+      $(this).removeClass('open');
+    }
+  });
+
+  submitArtistSearch()
+  $('#search').removeClass('open');
 })
 
-// EVENT LISTERNERS
-function subtmitArtistSearch() {
-  $('input:submit').on('click', function(event) {
-    event.preventDefault()
-    let artist_name = $('#artist_name').val()
-    getArtistData(artist_name)
-  })
-}
+  // Create new artist
 
+
+
+function submitArtistSearch() {
+    $('button:submit').on('click', function(event) {
+      $('#search').removeClass('open');
+      $("#artistInfo").empty()
+      $("#topTracks").empty()
+      $("#eventsInfo").empty()
+      event.preventDefault()
+      let artist_name = $('#artist_name').val()
+      getArtistData(artist_name)
+      $('#artist_name').val("")
+    })
+}
 
 // ELEMENT FUNCTIONS
 
@@ -79,6 +105,8 @@ function spotifyArtistTopTracksAJAX(id) {
     success: function(data) {
       artistTopTracks = data.tracks
       bandsInTownAJAX(data.tracks[0].artists[0].name)
+//       spotifyArtistData = data.artists.items[0]
+//       spotifyArtistId = spotifyArtistData.id
     },
     error: function() {
 
@@ -104,4 +132,5 @@ function bandsInTownAJAX(artist) {
 
 function ajaxDataSendOff() {
   artistConstructor(artistIdData, albumData, artistTopTracks, bitData)
+
 }

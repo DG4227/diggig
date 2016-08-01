@@ -2,37 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-	<title>DigGig - Find shows for the music you dig!</title>
-  <link rel="stylesheet" href="css/stylesheet.css">
-  <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
-  <script src="lib/node_modules/jquery/dist/jquery.js"></script>
-  <script type="text/javascript" src="js/jquery.fullPage.js"></script>
-  <script src="app/store.js"></script>
-	<script src="app/models/artist.js"></script>
-  <script src="app/models/album.js"></script>
-  <script src="app/models/song.js"></script>
-	<script src="app/models/event.js"></script>
-  <script src="app/controllers/songsController.js"></script>
-  <script src="app/controllers/albumsController.js"></script>
-  <script src="app/controllers/eventsController.js"></script>
-  <script src="app/controllers/artistsController.js"></script>
-  <script src="app/app.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>DigGig - Find shows for the music you dig!</title>
+    <script src="lib/node_modules/jquery/dist/jquery.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/models/artist.js"></script>
+    <script src="app/models/event.js"></script>
+    <script src="lib/handlebars-v4.0.5.js"></script>
+    <script src="app/controllers/artistsController.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
-<body>
- <div id="fullpage">
-  <div class="section">
-    <h1 id="brand">DigGig</h1>
-     <form action="">
-       <div class='name '>
-         <label for="name">Artist Name</label>
-         <input id='artist_name' class='input input_name' type="text" >
-       </div>
-       <input type="submit">
-     </form>
+<body style="background-color:black;">
+<div id="search">
+    <button type="button" class="close">×</button>
+    <form>
+        <input type="search" id='artist_name' class='input input_name' value="" placeholder="find songs and concerts" />
+        <button type="submit" class="btn btn-primary">GO</button>
+    </form>
   </div>
-  <div class="section">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div class="spacer">
+    </div>
+<a href="#search">
+  <h1 class="brand">DigGig</h1><br>
+  <p3> <center>find your favorite artists</center> <p></p3>
+</a>
+<div class = 'container' id='artistInfo' style="background-color:black;">
+</div>
+<div class = 'container' id='similarArtists' style="background-color:white;">
+<script id='similar' type="text/x-handlebars-template">
+{{#each artist}}
+  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+      <div class="hovereffect">
+          <img class="img-responsive" src="" alt="">
+              <div class="overlay">
+                  <h2>Hover effect 7</h2>
+                  <p>
+                      <a href="#images">
+                          <i class="fa fa-twitter"></i>
+                      </a>
+                      <a href="#">
+                          <i class="fa fa-facebook"></i>
+                      </a>
+                      <a href="#">
+                          <i class="fa fa-instagram"></i>
+                      </a>
+                      <a href="#">
+                          <i class="fa fa-dribbble"></i>
+                      </a>
+                  </p>
+              </div>
+      </div>
   </div>
+{{/each}}
+</script>
+</div>
+<div class = 'container' id='topTracks' style="background-color:black;">
+</div>
+<div class = 'container' id='eventsInfo' style="background-color:white;">
 </div>
 </body>
 </html>
+
+<!-- <link rel="stylesheet" href="css/bootstrap.css">
+<title>DigGig - Find shows for the music you dig!</title>
+<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+<script src="lib/node_modules/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+<script src="app/store.js"></script>
+<script src="app/models/artist.js"></script>
+<script src="app/models/album.js"></script>
+<script src="app/models/song.js"></script>
+<script src="app/models/event.js"></script>
+<script src="app/controllers/songsController.js"></script>
+<script src="app/controllers/albumsController.js"></script>
+<script src="app/controllers/eventsController.js"></script>
+<script src="app/controllers/artistsController.js"></script>
+<script src="app/app.js"></script> -->
