@@ -132,5 +132,4 @@ function bandsInTownAJAX(artist) {
 
 function ajaxDataSendOff() {
   artistConstructor(artistIdData, albumData, artistTopTracks, bitData)
-
 }

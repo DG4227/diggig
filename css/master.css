@@ -1,0 +1,8 @@
+#search a:active {
+  text-decoration: none;
+}
+
+a:link {
+ text-decoration: none;
+ color: #ff6666 ;
+}
