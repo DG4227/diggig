@@ -32,6 +32,7 @@ function submitArtistSearch() {
       $("#artistInfo").empty()
       $("#topTracks").empty()
       $("#eventsInfo").empty()
+      // $("#similarArtists").empty()
       event.preventDefault()
       let artist_name = $('#artist_name').val()
       getArtistData(artist_name)
@@ -76,6 +77,7 @@ function setSpotifyIdIfExists(data) {
     spotifyArtistInfoAJAX(artistId)
   } else {
     artistId = null
+    $("#artistInfo").append(`<h3 style="color:white;">No results found!</h3>`)
   }
 }
 

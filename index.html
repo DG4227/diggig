@@ -29,51 +29,41 @@
     </form>
   </div>
     <div class="spacer">
-    </div>
+  </div>
 <a href="#search">
   <h1 class="brand">DigGig</h1><br>
   <p3> <center>find your favorite artists</center> <p></p3>
 </a>
-<div class = 'container' id='artistInfo' style="background-color:black;">
-</div>
-<div class = 'container' id='similarArtists' style="background-color:white;">
-<script id='similar' type="text/x-handlebars-template">
-{{#each artists as |artist|}}
-<div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
-  <div class="hovereffect" style="width:200px;height:200px;overflow:hidden">
-    <img class="img-responsive" src="{{artist.imgUrl}}" alt="">
-            <div class="overlay">
-              <p3>{{artist.name}}</p3>
-				<p>
-					<a href="{{artist.listenUrl}}">Listen on Spotify</a>
-				</p>
-            </div>
-    </div>
-</div>
 
-{{/each}}
-<p>
-</script>
-</div>
-<div class = 'container' id='topTracks' style="background-color:black;">
-</div>
-<div class = 'container' id='eventsInfo' style="background-color:white;">
+<div id="all_content">
+  <div class = 'container' id='artistInfo' style="background-color:black;">
+  </div>
+
+  <div class = 'container' id='similarArtists' style="background-color:white;">
+    <script id='similar' type="text/x-handlebars-template">
+      {{#each artists as |artist|}}
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+          <div class="hovereffect" style="width:200px;height:200px;overflow:hidden">
+            <img class="img-responsive" src="{{artist.imgUrl}}" alt="">
+              <div class="overlay">
+                <p>
+                <p3>{{artist.name}}</p3>
+        				<p>
+        				<a href="{{artist.listenUrl}}">Listen on Spotify</a>
+              </div>
+          </div>
+        </div>
+      {{/each}}
+      <p>
+    </script>
+  </div>
+
+  <div class = 'container' id='topTracks' style="background-color:black;">
+  </div>
+
+  <div class = 'container' id='eventsInfo' style="background-color:white;">
+  </div>
+
 </div>
 </body>
 </html>
-
-<!-- <link rel="stylesheet" href="css/bootstrap.css">
-<title>DigGig - Find shows for the music you dig!</title>
-<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
-<script src="lib/node_modules/jquery/dist/jquery.js"></script>
-<script type="text/javascript" src="js/jquery.fullPage.js"></script>
-<script src="app/store.js"></script>
-<script src="app/models/artist.js"></script>
-<script src="app/models/album.js"></script>
-<script src="app/models/song.js"></script>
-<script src="app/models/event.js"></script>
-<script src="app/controllers/songsController.js"></script>
-<script src="app/controllers/albumsController.js"></script>
-<script src="app/controllers/eventsController.js"></script>
-<script src="app/controllers/artistsController.js"></script>
-<script src="app/app.js"></script> -->

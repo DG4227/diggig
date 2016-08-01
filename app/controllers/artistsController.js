@@ -26,6 +26,9 @@ function displayAllEvents(){
     $('#eventsInfo').append(`<h3>Recent Tour Dates</h3>`)
     artist.events.forEach((event)=>displayEvent(event))
   }
+  else{
+    $('#eventsInfo').append(`<h3>No recent tours found!</h3>`)
+  }
 }
 
 function displayEvent(event){
@@ -38,16 +41,22 @@ var organizedSimilar = {artists:[]}
 
 function organizeSimilar(obj){
   obj.forEach((artist)=>{
-    organizedSimilar.artists.push({name:artist.name, imgUrl:artist.images[0].url, listenUrl:artist.external_urls.spotify})
-  })
+    if(artist.images[1].url){
+      organizedSimilar.artists.push({name:artist.name, imgUrl:artist.images[1].url, listenUrl:artist.external_urls.spotify})
+    }})
+  organizedSimilar.artists = organizedSimilar.artists.slice(0,12)
 }
 
 function displaySimilarArtists(){
   $("#similarArtists").append(`<h3>Similar Artists</h3>`)
-  var source = $("#similar").html();
-  var template = Handlebars.compile(source);
   organizeSimilar(similarData)
-  var html = template(organizedSimilar);
+  handle($("#similar"), organizedSimilar)
+}
+
+function handle(containerId, data){
+  var source = $(containerId).html();
+  var template = Handlebars.compile(source);
+  var html = template(data);
   addContentToSimilar(html)
 }
 
