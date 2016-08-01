@@ -5,7 +5,7 @@ $(function(){
   // Event listeners
   subtmitArtistSearch()
 
-
+  $('#fullpage').fullpage()
 })
 
 // EVENT LISTERNERS
