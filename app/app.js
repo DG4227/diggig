@@ -4,12 +4,7 @@ const store = {
 }
 
 $(function(){
-  // On Page Load Effects
   fadeLandingOnLoad()
-  // Event listeners
-
-
-  // $('#fullpage').fullpage()
 
   $('a[href="#search"]').on('click', function(event) {
     event.preventDefault();
@@ -90,10 +85,23 @@ function spotifyArtistInfoAJAX(id) {
     url: `https://api.spotify.com/v1/artists/${id}/albums`,
     success: function(data) {
       albumData= data.items
-      spotifyArtistTopTracksAJAX(id)
+      spotifyArtistTopTracksAJAX(id);
+      spotifySimilarArtists(id);
     },
     error: function() {
 
+    }
+  })
+}
+
+function spotifySimilarArtists(id) {
+  return $.ajax({
+    method: "GET",
+    url: `https://api.spotify.com/v1/artists/${id}/related-artists`,
+    success: function(data) {
+      similarData= data.artists
+    },
+    error: function() {
     }
   })
 }

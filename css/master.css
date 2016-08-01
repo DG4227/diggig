@@ -6,3 +6,12 @@ a:link {
  text-decoration: none;
  color: #ff6666 ;
 }
+
+.img-container {
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+}
+.img-container img {
+    height: 100%;
+}
