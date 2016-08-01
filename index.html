@@ -9,40 +9,35 @@
 	<script src="app/models/artist.js"></script>
 	<script src="app/models/event.js"></script>
   <script src="app/controllers/artistsController.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 
 </head>
-<body>
+<body style="background-color:black;">
+
+<div id="search">
+    <button type="button" class="close">×</button>
+    <form>
+        <input type="search" id='artist_name' class='input input_name' value="" placeholder="find songs and concerts" />
+        <button type="submit" class="btn btn-primary">GO</button>
+    </form>
+</div>
 	<div class="spacer">
 
 	</div>
-  <h1 id="brand">DigGig</h1>
-  <div class='container' id="searchBar" height='100%'>
-  	<div class="wrapper">
-  		<div class="details">
-  		   <form action="">
-  		     <div class='name '>
-  		       <label for="name">Search an artist: </label>
-  		       <input id='artist_name' class='input input_name' type="text" > <input type="submit">
-  		     </div>
-  		   </form>
-  		</div>
-  	</div>
-  </div>
-<div id="content">
 
-<div class = 'container' id='artistInfo' style="background-color:black;">
-  ARTIST INFO HERE
-</div>
-<div class = 'container' id='topTracks' style="background-color:white;">
-  TOP TRACKS HERE
-</div>
-<font color="FFFFFF">
-<div class = 'container' id='eventsInfo' style="background-color:black;">
+<a href="#search">
+  <h1 class="brand">DigGig</h1><br>
 
+<p3> <center>find your favorite artists</center> <p></p3>
+</a>
+<div class = 'container' id='artistInfo' style="background-color:white;">
+</div>
+<div class = 'container' id='topTracks' style="background-color:black;">
+</div>
 
+<div class = 'container' id='eventsInfo' style="background-color:white;">
 </div>
-</font>
-</div>
+
 
 </body>
 </html>

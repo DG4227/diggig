@@ -12,8 +12,10 @@ function artistController(spotifyArtistData) {
 
 //SHOW EVENTS FROM BANDS IN TOWN
 function displayAllEvents(){
-  addContent(`<h3>Recent Tour Dates</h3>`)
-  bitData.forEach((event)=>displayEvent(event))
+  if (bitData.length!==0){
+    addContent(`<h3>Recent Tour Dates</h3>`)
+    bitData.forEach((event)=>displayEvent(event))
+  }
 }
 
 function displayEvent(event){
@@ -27,6 +29,6 @@ function addContent(html){
 }
 
 function displayPlaylist(){
-  $('#topTracks').append(`<iframe src="https://embed.spotify.com/?uri=${spotifyArtistData.uri}" width="100%" height="380" frameborder="0" allowtransparency="true"></iframe>`)
+  $('#topTracks').append(`<h3 style="color:white;">Top Tracks</h3>`)
+  $('#topTracks').append(`<iframe src="https://embed.spotify.com/?uri=${spotifyArtistData.uri}" width="100%" height="380" frameborder="0" allowtransparency="true"></iframe><p>`)
 }
-
