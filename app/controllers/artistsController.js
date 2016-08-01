@@ -5,5 +5,4 @@ function artistConstructor(artistIdData, albumData, artistTopTracks, bitData) {
   eventConstructor(artist, bitData)
   albumConstructor(artist, albumData)
   songConstructor(artist, artistTopTracks)
-  debugger
 }

@@ -6,6 +6,7 @@ const Event = (function() {
       this.datetime = data.formatted_datetime
       this.ticket_status = data.ticket_status
       artist.events.push(this)
+      Store.events.push(this)
     }
   }
 }())
