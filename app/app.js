@@ -4,13 +4,12 @@ const store = {
 }
 
 $(function(){
-  // On Page Load Effects
   fadeLandingOnLoad()
-  // Event listeners
+
 
   $('#fullpage').fullpage({
-      // anchors:['landing', 'artist-info', 'album']
-  });
+    scrollingSpeed: (515)
+  })
 
   $('a[href="#search"]').on('click', function(event) {
     event.preventDefault();
@@ -35,10 +34,6 @@ $(function(){
 
 
 })
-  // Create new artist
-
-
-
 
 function submitArtistSearch() {
     $('button:submit').on('click', function(event) {
@@ -47,19 +42,19 @@ function submitArtistSearch() {
       $("#artistInfo").empty()
       $("#topTracks").empty()
       $("#eventsInfo").empty()
+      // $("#similarArtists").empty()
       event.preventDefault()
       let artist_name = $('#artist_name').val()
       getArtistData(artist_name)
+      $('#artist_name').val("")
     })
 }
 
-// ELEMENT FUNCTIONS
 
 function fadeLandingOnLoad() {
   $('#brand').hide().fadeIn(2000)
 }
 
-// AJAX FUNCTIONS
 
 function getArtistData(artist) {
   var artistId
@@ -91,6 +86,7 @@ function setSpotifyIdIfExists(data) {
     spotifyArtistInfoAJAX(artistId)
   } else {
     artistId = null
+    $("#artistInfo").append(`<h3 style="color:white;">No results found!</h3>`)
   }
 }
 
@@ -100,10 +96,23 @@ function spotifyArtistInfoAJAX(id) {
     url: `https://api.spotify.com/v1/artists/${id}/albums`,
     success: function(data) {
       albumData= data.items
-      spotifyArtistTopTracksAJAX(id)
+      spotifyArtistTopTracksAJAX(id);
+      spotifySimilarArtists(id);
     },
     error: function() {
 
+    }
+  })
+}
+
+function spotifySimilarArtists(id) {
+  return $.ajax({
+    method: "GET",
+    url: `https://api.spotify.com/v1/artists/${id}/related-artists`,
+    success: function(data) {
+      similarData= data.artists
+    },
+    error: function() {
     }
   })
 }
@@ -115,8 +124,6 @@ function spotifyArtistTopTracksAJAX(id) {
     success: function(data) {
       artistTopTracks = data.tracks
       bandsInTownAJAX(data.tracks[0].artists[0].name)
-//       spotifyArtistData = data.artists.items[0]
-//       spotifyArtistId = spotifyArtistData.id
     },
     error: function() {
 
@@ -144,8 +151,6 @@ function lastFmAJAX(artist) {
   return $.ajax({
     method: "GET",
     url: `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artist}&api_key=dd175f30902c81d7efbd9bee0b5398b5&format=json`,
-    // crossDomain: true,
-    // dataType: 'jsonp',
     success: function(data) {
       lastFmData = data
       ajaxDataSendOff()

@@ -7,7 +7,7 @@ a:link {
  color: #ff6666 ;
 }
 
-.artist-info {
+.artist-information {
   background-color: rgb(20, 20, 20);
   width: 85% !important;
   margin: 0 auto;
@@ -21,14 +21,20 @@ a:link {
 }
 
 .artist-img img {
-  
+
 }
-/*.artist-img {
-  background-image: url('https://consequenceofsound.files.wordpress.com/2016/02/radiohead.jpg');
-  height: 500px;
-  background-size: contain;
-  background-repeat: no-repeat;
-}*/
-/*.col-xs-6 {
-  padding: 5px 15px;
-}*/
+
+.img-container {
+    /*width: 90px;
+    height: 90px;*/
+    overflow: hidden;
+    margin: 10px 0;
+}
+.img-container img {
+    width: 100%;
+}
+
+.img-margin {
+  margin: 10px 0;
+  padding: 0 5px;
+}
