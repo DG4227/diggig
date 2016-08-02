@@ -18,13 +18,15 @@
       <script src="app/controllers/albumsController.js"></script>
       <script src="app/controllers/eventsController.js"></script>
       <script src="app/controllers/artistsController.js"></script>
-      <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+      <script src="nitch.js"></script>
+
+      <link href="https://fonts.googleapis.com/css?family=Lobster|Playfair+Display" rel="stylesheet">
   </head>
 <body style="background-color:black;">
   <div id="search">
     <button type="button" class="close">×</button>
     <form>
-        <input type="search" id='artist_name' class='input input_name' value="" placeholder="find songs and concerts" />
+        <input type="search" id='artist_name' class='input input_name' value="" placeholder="find songs and concerts" autocomplete="off" />
         <button type="submit" class="btn btn-primary">GO</button>
     </form>
   </div>
@@ -65,6 +67,9 @@
   </div>
 
   <div class = 'container' id='eventsInfo' style="background-color:white;">
+  </div>
+
+  <div class = 'container' id='quotes' style="background-color:black;" class="padding">
   </div>
 
 </div>

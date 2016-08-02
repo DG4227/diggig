@@ -7,7 +7,7 @@ const Artist = (function() {
 			this.topTracks = []
 			this.albums = []
 			this.genre = data.genres[0]
-			this.picture = data.images[0].url
+			// if(data.images[0].url){this.picture = data.images[0].url}
 			Store.artists.push(this)
 		}
 	}

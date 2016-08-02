@@ -90,8 +90,8 @@
 }
 
 @font-face {
-	font-family: 'BebasNeue Light';
-	src: url('../fonts/BebasNeue Light.ttf');
+	font-family: 'BebasNeueLight';
+	src: url('../fonts/BebasNeueLight.ttf');
 }
 
 @font-face {
@@ -122,6 +122,16 @@ h1 {
 
   /*text-shadow: 7px 3px 3px black;*/
 }
+
+.quote {
+  text-align: center;
+  font-family: BebasNeue;
+  color: #FF5252;
+	font-size: 2em;
+}
+
+
+
 
 p3 {
 	text-align: center;

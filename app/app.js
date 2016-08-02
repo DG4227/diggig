@@ -77,6 +77,7 @@ function setSpotifyIdIfExists(data) {
     artistId = data.artists.items[0].id
     artistIdData = data.artists.items[0]
     spotifyArtistInfoAJAX(artistId)
+    addQuote()
   } else {
     artistId = null
     $("#artistInfo").append(`<h3 style="color:white;">No results found!</h3>`)
@@ -149,10 +150,10 @@ function lastFmAJAX(artist) {
       ajaxDataSendOff()
     },
     error: function() {
-
     }
 })
 }
+
 
 function ajaxDataSendOff() {
   artistConstructor(artistIdData, albumData, artistTopTracks, bitData, lastFmData)
