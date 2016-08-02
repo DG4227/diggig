@@ -22,17 +22,15 @@ $(function(){
   $('#search').removeClass('open');
 })
 
-  // Create new artist
-
-
-
 function submitArtistSearch() {
     $('button:submit').on('click', function(event) {
       $('#search').removeClass('open');
       $("#artistInfo").empty()
       $("#topTracks").empty()
       $("#eventsInfo").empty()
-      // $("#similarArtists").empty()
+      if (typeof artistId != 'undefined'){
+        $(".hovereffect").empty()
+      }
       event.preventDefault()
       let artist_name = $('#artist_name').val()
       getArtistData(artist_name)

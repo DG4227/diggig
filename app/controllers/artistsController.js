@@ -37,9 +37,8 @@ function displayEvent(event){
   addContentToEvents(`<a href="${event.facebook_rsvp_url}">RSVP on Facebook</a><p>`)
 }
 
-var organizedSimilar = {artists:[]}
-
 function organizeSimilar(obj){
+  organizedSimilar = {artists:[]}
   obj.forEach((artist)=>{
     if(artist.images[1].url){
       organizedSimilar.artists.push({name:artist.name, imgUrl:artist.images[1].url, listenUrl:artist.external_urls.spotify})
@@ -48,7 +47,8 @@ function organizeSimilar(obj){
 }
 
 function displaySimilarArtists(){
-  $("#similarArtists").append(`<h3>Similar Artists</h3>`)
+  $("#clear").empty()
+  $("#clear").append(`<h3>Similar Artists</h3>`)
   organizeSimilar(similarData)
   handle($("#similar"), organizedSimilar)
 }
