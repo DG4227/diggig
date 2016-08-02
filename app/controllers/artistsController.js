@@ -29,18 +29,26 @@ function displayEvent(event){
 
 function organizeSimilar(obj){
   organizedSimilar = {artists:[]}
-  obj.forEach((artist)=>{
-    if(artist.images[1].url){
-      organizedSimilar.artists.push({name:artist.name, imgUrl:artist.images[1].url, listenUrl:artist.external_urls.spotify})
-    }})
-  organizedSimilar.artists = organizedSimilar.artists.slice(0,12)
-  similarData=[]
+  obj.forEach(
+    (artist)=>{
+      // if(artist.images[1].url && artist.external_urls.spotify){
+        organizedSimilar.artists.push(
+          {name:artist.name,
+          imgUrl:artist.images[1].url,
+          listenUrl:artist.external_urls.spotify}
+        )
+      // }
+    }
+  )
+  if(organizedSimilar.artists.length > 12){organizedSimilar.artists = organizedSimilar.artists.slice(0,12)}
+  return organizedSimilar
 }
 
 function displaySimilarArtists(){
-  $("#clear").html("<h3>Similar Artists</h3>")
+  if(similarData.length !=0){$("#clear").html("<h3>Similar Artists</h3>")}
   organizeSimilar(similarData)
   handle($("#similar"), organizedSimilar)
+  similarData=[]
 }
 
 function handle(containerId, data){
