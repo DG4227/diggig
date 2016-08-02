@@ -1,7 +1,7 @@
 var artist
 
-function artistConstructor(artistIdData, albumData, artistTopTracks, bitData) {
-  artist = new Artist(artistIdData)
+function artistConstructor(artistIdData, albumData, artistTopTracks, bitData, lastFmData) {
+  artist = new Artist(artistIdData, lastFmData)
   eventConstructor(artist, bitData)
   albumConstructor(artist, albumData)
   songConstructor(artist, artistTopTracks)
@@ -9,16 +9,6 @@ function artistConstructor(artistIdData, albumData, artistTopTracks, bitData) {
   displayPlaylist()
   displaySimilarArtists()
 }
-
-
-// function artistController(spotifyArtistData) {
-//   var artistName = spotifyArtistData.name
-//   var artistGenres = spotifyArtistData.genres.join(", ")
-//   var artistImg = spotifyArtistData.images[1].url
-//   var newArtist = new Artist(artistName,artistGenres,artistImg)
-//   displayAllEvents()
-//   displayPlaylist()
-
 
 //SHOW EVENTS FROM BANDS IN TOWN
 function displayAllEvents(){
@@ -74,5 +64,5 @@ function addContentToSimilar(html){
 
 function displayPlaylist(){
   $('#topTracks').append(`<h3 style="color:white;">Top Tracks</h3>`)
-  $('#topTracks').append(`<iframe src="https://embed.spotify.com/?uri=${artistIdData.uri}" width="100%" height="380" frameborder="0" allowtransparency="true"></iframe><p>`)
+  $('#topTracks').append(`<iframe src="https://embed.spotify.com/?uri=${artistIdData.uri}" width="100%" height="400px" frameborder="0" allowtransparency="true"></iframe><p>`)
 }
