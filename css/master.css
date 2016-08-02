@@ -6,3 +6,36 @@ a:link {
  text-decoration: none;
  color: #ff6666 ;
 }
+
+#label {
+	text-transform: capitalize;
+  font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight:200;
+  font-size: 30px;
+  cursor: crosshair;
+  background-color:rgba(0, 0, 0, 0);
+  color:rgb(134, 121, 121);
+  letter-spacing: 3px;
+	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#usr {
+		text-align:center;
+    background-color:rgba(0, 0, 0, 0);
+    color:rgb(153, 102, 102);
+    letter-spacing: 3px;
+    border: none;
+    outline:none;
+    font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
+  	font-weight:200;
+  	font-size: 30px;
+    height:40px;
+    transition:height 1s;
+    -webkit-transition:height 1s;
+}
+/*#usr:focus {
+    height:50px;
+    font-size:40px;
+} this is cool, changes properties on click*/
