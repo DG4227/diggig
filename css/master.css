@@ -12,7 +12,6 @@ a:link {
   font-family:Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight:200;
   font-size: 30px;
-  cursor: crosshair;
   background-color:rgba(0, 0, 0, 0);
   color:rgb(134, 121, 121);
   letter-spacing: 3px;
@@ -35,7 +34,8 @@ a:link {
     transition:height 1s;
     -webkit-transition:height 1s;
 }
-/*#usr:focus {
-    height:50px;
-    font-size:40px;
-} this is cool, changes properties on click*/
+
+#usr:focus {
+    height:200px;
+    font-size:150px;
+}

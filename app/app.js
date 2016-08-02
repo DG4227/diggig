@@ -24,6 +24,7 @@ $(function(){
   
   submitArtistSearch()
   currentUser()
+  grabName()
   $('#search').removeClass('open');
 })
 
@@ -40,7 +41,6 @@ function submitArtistSearch() {
       $("#eventsInfo").empty()
       event.preventDefault()
       let artist_name = $('#artist_name').val()
-      currentUser()
       localStorage.setItem("lastSearch", $('#artist_name').val())
       // use this to display similar artists? 
       getArtistData(artist_name)
@@ -56,14 +56,18 @@ function fadeLandingOnLoad() {
 
 
 function currentUser() {
-  if (localStorage.username) {
+  if (localStorage.username && localStorage.username != undefined) {
     $("#label").append(`Welcome back, ${localStorage.username}`)
    } else {
-    $("#label").append("Hey! What's your name? <input type='text' id='usr' placeholder='Enter Here'> ")
+    $("#label").append("Hey! What's your name? <input type='text' id='usr' placeholder='Enter Here' onInput='grabName()'> ")
   }
 }
 
 // AJAX FUNCTIONS
+
+function grabName(){
+  localStorage.setItem("username", $('#usr').val() )
+}
 
 function getArtistData(artist) {
   var artistId
