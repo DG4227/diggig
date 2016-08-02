@@ -34,6 +34,7 @@ function submitArtistSearch() {
       $("#artistInfo").empty()
       $("#topTracks").empty()
       $("#eventsInfo").empty()
+      $("#clear").html("")
       // $("#similarArtists").empty()
       event.preventDefault()
       let artist_name = $('#artist_name').val()
