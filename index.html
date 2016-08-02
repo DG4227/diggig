@@ -23,6 +23,9 @@
       <link href="https://fonts.googleapis.com/css?family=Lobster|Playfair+Display" rel="stylesheet">
   </head>
 <body style="background-color:black;">
+  <div id="fixedbutton">
+    <span class="glyphicon glyphicon-plus glyphy"></span>
+  </div>
   <div id="search">
     <button type="button" class="close">×</button>
     <form>
@@ -40,13 +43,15 @@
   <div class = 'container' id="artistInfo" style="background-color:black;">
 
   </div>
-  <div class="container" id="artistAlbums" style="background-color:black;">
-    <div class="my-flipster">
-      <ul class="coverflow">
+  <script id="album-container" type="text/x-handlebars-template">
+    <div class="container" id="artistAlbums">
+      <div class="my-flipster">
+        <ul class="coverflow">
 
-      </ul>
+        </ul>
+      </div>
     </div>
-  </div>
+  </script>
   <div class = 'container' id='similarArtists' style="background-color:white;">
     <div id='clear'>
     </div>
@@ -72,9 +77,11 @@
   <div class = 'container' id='eventsInfo' style="background-color:white;">
 
   </div>
-  <div class = 'container' id='quotes' style="background-color:black;">
+  <script id='quote-block' type="text/x-handlebars-template">
+    <div class = 'container' id='quotes' style="background-color:black;">
 
-  </div>
+    </div>
+  </script>
 </div>
 <script id='artist-info-block' type="text/x-handlebars-template">
   <div class="row artist-img-container">

@@ -34,6 +34,8 @@ function displayEvent(event){
 }
 
 function displayAlbums(albums) {
+  var $template = $('#album-container').html()
+   $( `${$template}` ).insertAfter( "#artistInfo" )
   albums.forEach(function (album) {
     $('.coverflow').append(`<li class=""><img src="${album.images[1].url}"/></li>`)
   })
@@ -96,15 +98,11 @@ function displayPlaylist(){
 }
 
 function addQuote(){
-
+  let $template = $('#quote-block').html()
+  $(`${$template}`).insertAfter('#eventsInfo')
   let rand = Math.floor((Math.random() * 123) + 1)*2;
   let quote = quotes[rand]
   $("#quotes").html(`<h1 class="quote">${quote}</h1>`)
-  document.getElementById("quotes").style.marginTop = "50px"
-  document.getElementById("quotes").style.paddingTop = "100px"
-  document.getElementById("quotes").style.paddingBottom = "100px"
-  document.getElementById("quotes").style.paddingRight = "100px"
-  document.getElementById("quotes").style.paddingLeft = "100px"
   // $("#quotes").append(`<center><p style='color:white;'>- quotes from nitch.com -</p></center>`)
 
 }

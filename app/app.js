@@ -5,8 +5,7 @@ const store = {
 
 $(function(){
   fadeLandingOnLoad()
-
-  $('a[href="#search"]').on('click', function(event) {
+  $('a[href="#search"], #fixedbutton').on('click', function(event) {
     event.preventDefault();
     $('#search').addClass('open');
     $('#search > form > input[type="search"]').focus();
@@ -29,12 +28,15 @@ function submitArtistSearch() {
       $("#artistInfo").empty()
       $("#topTracks").empty()
       $("#eventsInfo").empty()
+      $("#quotes").remove()
       $("#clear").html("")
+      $('#artistAlbums').remove()
       // $("#similarArtists").empty()
       event.preventDefault()
       let artist_name = $('#artist_name').val()
       getArtistData(artist_name)
       $('#artist_name').val("")
+      hideQuote()
     })
 }
 
@@ -82,7 +84,6 @@ function setSpotifyIdIfExists(data) {
   } else {
     artistId = null
     $("#artistInfo").append(`<h3 style="color:white;">No results found!</h3>`)
-    $("#quotes").empty()
   }
 }
 

@@ -53,7 +53,26 @@ a:visited {
 }
 
 .landing-page {
-  height: 600px
+  height: 510px;
+}
+
+#fixedbutton {
+    position: fixed;
+    /*bottom: 0px;*/
+    right: 0px;
+    height: 50px;
+    width: 50px;
+    bottom: 15px;
+    background-color: rgba(20, 20, 20, 0.3);
+    border-radius: 100px 0px 0 100px;
+}
+
+.glyphy {
+  top: 10px;
+  font-size: 1.8em;
+  right: -14px;
+  color: rgba(255, 102, 102, .6);
+  cursor: pointer;
 }
 
 .artist-img img {
@@ -72,7 +91,9 @@ a:visited {
 }
 
 #artistAlbums {
+  background-color: rgb(20, 20, 20);
   padding: 50px 20px;
+  box-shadow: inset 0px 0px 16px 10px rgba(0,0,0,0.75);
 }
 
 .img-margin {
@@ -98,6 +119,8 @@ a:visited {
 
 #quotes {
   border-radius: 20px 20px 0px 0px;
+  margin-top: 50px;
+  padding: 30px;
 }
 
 #topTracks iframe {
@@ -109,5 +132,5 @@ a:visited {
 }
 
 .img-responsive {
-  width: 140% !important;
+  width: 100% !important;
 }
