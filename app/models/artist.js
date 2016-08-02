@@ -1,7 +1,8 @@
 const Artist = (function() {
 	return class {
-		constructor(data) {
+		constructor(data, lastFmData) {
 			this.name = data.name
+			this.bio = lastFmData.artist.bio.content
 			this.events = []
 			this.topTracks = []
 			this.albums = []

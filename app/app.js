@@ -8,8 +8,9 @@ $(function(){
   fadeLandingOnLoad()
   // Event listeners
 
-
-  // $('#fullpage').fullpage()
+  $('#fullpage').fullpage({
+      // anchors:['landing', 'artist-info', 'album']
+  });
 
   $('a[href="#search"]').on('click', function(event) {
     event.preventDefault();
@@ -24,15 +25,24 @@ $(function(){
   });
 
   submitArtistSearch()
-  $('#search').removeClass('open');
-})
+  $('#search').removeClass('open')
 
+  $('.artist-img').backgroundBlur({
+      imageURL : 'https://consequenceofsound.files.wordpress.com/2016/02/radiohead.jpg',
+      blurAmount : 50,
+      imageClass : 'bg-blur'
+  });
+
+
+})
   // Create new artist
+
 
 
 
 function submitArtistSearch() {
     $('button:submit').on('click', function(event) {
+      $.fn.fullpage.moveSectionDown()
       $('#search').removeClass('open');
       $("#artistInfo").empty()
       $("#topTracks").empty()
@@ -40,7 +50,6 @@ function submitArtistSearch() {
       event.preventDefault()
       let artist_name = $('#artist_name').val()
       getArtistData(artist_name)
-      $('#artist_name').val("")
     })
 }
 
@@ -58,6 +67,7 @@ function getArtistData(artist) {
   var albumData
   var bitData
   var artistTopTracks
+  var lastFmData
   spotifyIdAJAX(artist)
 }
 
@@ -122,7 +132,7 @@ function bandsInTownAJAX(artist) {
       dataType: 'jsonp',
       success: function(data) {
         bitData = data
-        ajaxDataSendOff()
+        lastFmAJAX(artist)
       },
       error: function() {
 
@@ -130,6 +140,22 @@ function bandsInTownAJAX(artist) {
   })
 }
 
+function lastFmAJAX(artist) {
+  return $.ajax({
+    method: "GET",
+    url: `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artist}&api_key=dd175f30902c81d7efbd9bee0b5398b5&format=json`,
+    // crossDomain: true,
+    // dataType: 'jsonp',
+    success: function(data) {
+      lastFmData = data
+      ajaxDataSendOff()
+    },
+    error: function() {
+
+    }
+})
+}
+
 function ajaxDataSendOff() {
-  artistConstructor(artistIdData, albumData, artistTopTracks, bitData)
+  artistConstructor(artistIdData, albumData, artistTopTracks, bitData, lastFmData)
 }

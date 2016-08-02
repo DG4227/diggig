@@ -1,13 +1,13 @@
 var artist
 
-function artistConstructor(artistIdData, albumData, artistTopTracks, bitData) {
-  artist = new Artist(artistIdData)
+function artistConstructor(artistIdData, albumData, artistTopTracks, bitData, lastFmData) {
+  artist = new Artist(artistIdData, lastFmData)
   eventConstructor(artist, bitData)
   albumConstructor(artist, albumData)
   songConstructor(artist, artistTopTracks)
   displayAllEvents()
   displayPlaylist()
-
+debugger
 }
 
 
