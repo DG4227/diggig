@@ -8,7 +8,7 @@ function artistConstructor(artistIdData, albumData, artistTopTracks, bitData, la
   displayAllEvents()
   displayPlaylist()
   displaySimilarArtists()
-  
+
 }
 
 //SHOW EVENTS FROM BANDS IN TOWN

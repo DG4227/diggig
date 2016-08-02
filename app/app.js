@@ -81,6 +81,7 @@ function setSpotifyIdIfExists(data) {
   } else {
     artistId = null
     $("#artistInfo").append(`<h3 style="color:white;">No results found!</h3>`)
+    $("#quotes").empty()
   }
 }
 
