@@ -6,11 +6,6 @@ const store = {
 $(function(){
   fadeLandingOnLoad()
 
-
-  $('#fullpage').fullpage({
-    scrollingSpeed: (515)
-  })
-
   $('a[href="#search"]').on('click', function(event) {
     event.preventDefault();
     $('#search').addClass('open');
@@ -29,7 +24,7 @@ $(function(){
 
 function submitArtistSearch() {
     $('button:submit').on('click', function(event) {
-      $.fn.fullpage.moveSectionDown()
+      // $.fn.fullpage.moveSectionDown()
       $('#search').removeClass('open');
       $("#artistInfo").empty()
       $("#topTracks").empty()
@@ -45,7 +40,14 @@ function submitArtistSearch() {
 
 
 function fadeLandingOnLoad() {
-  $('#brand').hide().fadeIn(2000)
+  $('.brand').hide().fadeIn(1300)
+  $('center').hide().fadeIn(1300)
+}
+
+function scrollTo() {
+  $('html, body').animate({
+    scrollTop: $("#artistInfo").offset().top -30
+  }, 1000);
 }
 
 
@@ -77,7 +79,6 @@ function setSpotifyIdIfExists(data) {
     artistId = data.artists.items[0].id
     artistIdData = data.artists.items[0]
     spotifyArtistInfoAJAX(artistId)
-    addQuote()
   } else {
     artistId = null
     $("#artistInfo").append(`<h3 style="color:white;">No results found!</h3>`)

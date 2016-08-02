@@ -2,12 +2,12 @@ const Artist = (function() {
 	return class {
 		constructor(data, lastFmData) {
 			this.name = data.name
-			this.bio = lastFmData.artist.bio.content
+			this.image = lastFmData.artist.image[4]['#text']
+			this.bio = lastFmData.artist.bio.summary
 			this.events = []
 			this.topTracks = []
 			this.albums = []
 			this.genre = data.genres[0]
-			// if(data.images[0].url){this.picture = data.images[0].url}
 			Store.artists.push(this)
 		}
 	}

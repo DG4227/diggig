@@ -5,10 +5,14 @@ function artistConstructor(artistIdData, albumData, artistTopTracks, bitData, la
   eventConstructor(artist, bitData)
   albumConstructor(artist, albumData)
   songConstructor(artist, artistTopTracks)
+  displayArtistInfo()
   displayAllEvents()
   displayPlaylist()
   displaySimilarArtists()
-
+  displayAlbums(albumData)
+  $('.my-flipster').flipster();
+  addQuote()
+  scrollTo()
 }
 
 //SHOW EVENTS FROM BANDS IN TOWN
@@ -27,6 +31,12 @@ function displayEvent(event){
   addContentToEvents(event.datetime)
   addContentToEvents(event.location)
   addContentToEvents(`<a href="${event.facebook_rsvp_url}">RSVP on Facebook</a><p>`)
+}
+
+function displayAlbums(albums) {
+  albums.forEach(function (album) {
+    $('.coverflow').append(`<li class=""><img src="${album.images[1].url}"/></li>`)
+  })
 }
 
 function organizeSimilar(obj){
@@ -52,6 +62,13 @@ function displaySimilarArtists(){
   if(organizedSimilar.artists.length ===12){$("#clear").html("<h3>Similar Artists</h3>")}
   handle($("#similar"), organizedSimilar)
   similarData=[]
+}
+
+function displayArtistInfo() {
+  var $template = $('#artist-info-block').html()
+  $('#artistInfo').append($template)
+  $('#artistInfo img').attr('src', `${artist.image}`)
+  $('.artist-bio p').append(artist.bio)
 }
 
 function handle(containerId, data){
@@ -88,6 +105,6 @@ function addQuote(){
   document.getElementById("quotes").style.paddingBottom = "100px"
   document.getElementById("quotes").style.paddingRight = "100px"
   document.getElementById("quotes").style.paddingLeft = "100px"
-  $("#quotes").append(`<center><p style='color:white;'>- quotes from nitch.com -</p></center>`)
+  // $("#quotes").append(`<center><p style='color:white;'>- quotes from nitch.com -</p></center>`)
 
 }

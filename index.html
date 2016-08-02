@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
       <link rel="stylesheet" href="css/bootstrap.css">
       <link rel="stylesheet" href="css/master.css">
+      <link rel="stylesheet" href="css/jquery.flipster.min.css">
       <title>DigGig - Find shows for the music you dig!</title>
       <script src="lib/node_modules/jquery/dist/jquery.js"></script>
-      <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+      <script src="js/jquery.flipster.min.js"></script>
       <script src="app/store.js"></script>
       <script src="app/app.js"></script>
       <script src="app/models/artist.js"></script>
@@ -19,7 +20,6 @@
       <script src="app/controllers/eventsController.js"></script>
       <script src="app/controllers/artistsController.js"></script>
       <script src="nitch.js"></script>
-
       <link href="https://fonts.googleapis.com/css?family=Lobster|Playfair+Display" rel="stylesheet">
   </head>
 <body style="background-color:black;">
@@ -30,23 +30,29 @@
         <button type="submit" class="btn btn-primary">GO</button>
     </form>
   </div>
-    <div class="spacer">
-  </div>
-<a href="#search">
-  <h1 class="brand">DigGig</h1><br>
-  <p3> <center>find your favorite artists</center> <p></p3>
-</a>
-
+<div class="landing-page">
+  <a href="#search">
+    <h1 class="brand">DigGig</h1><br>
+    <p3> <center>find your favorite artists</center> <p></p3>
+  </a>
+</div>
 <div id="all_content">
-  <div class = 'container' id='artistInfo' style="background-color:black;">
-  </div>
+  <div class = 'container' id="artistInfo" style="background-color:black;">
 
+  </div>
+  <div class="container" id="artistAlbums" style="background-color:black;">
+    <div class="my-flipster">
+      <ul class="coverflow">
+
+      </ul>
+    </div>
+  </div>
   <div class = 'container' id='similarArtists' style="background-color:white;">
     <div id='clear'>
     </div>
     <script id='similar' type="text/x-handlebars-template">
       {{#each artists as |artist|}}
-        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 img-margin">
+        <div class="col-xs-3 img-margin">
           <div class="hovereffect" style="width:230px;height:230px;overflow:hidden">
             <img class="img-responsive" src="{{artist.imgUrl}}" alt="">
               <div class="overlay">
@@ -58,20 +64,29 @@
           </div>
         </div>
       {{/each}}
-      <p>
     </script>
-
   </div>
-
   <div class = 'container' id='topTracks' style="background-color:black;">
-  </div>
 
+  </div>
   <div class = 'container' id='eventsInfo' style="background-color:white;">
-  </div>
 
+  </div>
   <div class = 'container' id='quotes' style="background-color:black;">
-  </div>
 
+  </div>
 </div>
+<script id='artist-info-block' type="text/x-handlebars-template">
+  <div class="row artist-img-container">
+    <div class="col-xs-6 artist-img">
+      <img src="" />
+    </div>
+    <div class="col-xs-6 artist-bio">
+      <p>
+
+      </p>
+    </div>
+  </div>
+</script>
 </body>
 </html>

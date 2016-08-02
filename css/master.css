@@ -2,6 +2,15 @@
   text-decoration: none;
 }
 
+.brand {
+  text-shadow: 3px 4px 3px rgba(0, 0, 0, .12);
+  padding-top: 190px;
+}
+
+center {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, .7);
+}
+
 a:link {
  text-decoration: none;
  color: #ff6666 ;
@@ -13,20 +22,43 @@ a:visited {
 }
 
 .artist-information {
-  background-color: rgb(20, 20, 20);
+  /*background-color: rgb(20, 20, 20);
   width: 85% !important;
   margin: 0 auto;
   border-radius: 8px;
-  /*padding: 0 40px;*/
+  /*padding: 0 40px;*/*/
+}
+
+.artist-info {
+}
+
+.artist-bio {
+  padding: 100px 30px 50px 30px;
+  color: white;
 }
 
 .artist-img {
-  border-radius: 8px;
-  overflow: hidden
+  overflow: hidden;
+  padding: 0;
+  max-height: 500px;
+}
+
+.event-block {
+  float: left;
+}
+
+#artistInfo {
+  border-radius: 20px 20px 0px 0px;
+  box-shadow: inset 0px 0px 22px 16px rgba(0,0,0,0.75);
+}
+
+.landing-page {
+  height: 600px
 }
 
 .artist-img img {
-
+  border-radius: 20px 0px 0px 0px;
+  max-width: 600px;
 }
 
 .img-container {
@@ -39,15 +71,43 @@ a:visited {
     width: 100%;
 }
 
+#artistAlbums {
+  padding: 50px 20px;
+}
+
 .img-margin {
   margin: 10px 0;
   padding: 0 5px;
+  float: left;
 }
 
+#similar {
+  padding: 20px 0;
+}
 
 .padding {
     padding-top: 2cm;
     padding-left: 2cm;
     padding-right: 2cm;
     padding-bottom: 2cm;
+}
+
+#eventsInfo {
+  border-radius: 0px 0px 20px 20px;
+}
+
+#quotes {
+  border-radius: 20px 20px 0px 0px;
+}
+
+#topTracks iframe {
+  padding-bottom: 20px;
+}
+
+.container {
+
+}
+
+.img-responsive {
+  width: 140% !important;
 }
