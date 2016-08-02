@@ -68,6 +68,17 @@
   </div>
 {{/each}}
 </script>
+  <script type = "text/javascript" language = "javascript">
+     function checkName() {(function() {
+      debugger
+      if ($('#usr')) {
+        $("#usr").onKeypress(function(event){
+          localStorage.setItem("username", $('#usr').val())
+          console.log(localStorage.val())
+          event.preventDefault();
+      });
+      }})};
+  </script>
 
 </div>
 <div class = 'container' id='topTracks' style="background-color:black;">

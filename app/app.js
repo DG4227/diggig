@@ -21,8 +21,9 @@ $(function(){
       $(this).removeClass('open');
     }
   });
-  currentUser()
+  
   submitArtistSearch()
+  currentUser()
   $('#search').removeClass('open');
 })
 
@@ -53,30 +54,15 @@ function fadeLandingOnLoad() {
   $('#brand').hide().fadeIn(2000)
 }
 
-function grabName() {
-    $('button:submit').on('click', function(event) {
-      $('#search').removeClass('open');
-      $("#artistInfo").empty()
-      $("#topTracks").empty()
-      $("#eventsInfo").empty()
-      event.preventDefault()
-      let artist_name = $('#artist_name').val()
-      currentUser()
-      localStorage.setItem("lastSearch", $('#artist_name').val())
-      // use this to display similar artists? 
-      getArtistData(artist_name)
-      $('#artist_name').val("")
-    })
-}
 
 function currentUser() {
   if (localStorage.username) {
     $("#label").append(`Welcome back, ${localStorage.username}`)
    } else {
-    $("#label").append(
-      "Hey! What's your name? <input type='text' id='usr' placeholder='Enter Here'> "
-      )}
+    $("#label").append("Hey! What's your name? <input type='text' id='usr' placeholder='Enter Here'> ")
+  }
 }
+
 // AJAX FUNCTIONS
 
 function getArtistData(artist) {
