@@ -25,7 +25,7 @@ $(function(){
 
   submitArtistSearch()
   $('#search').removeClass('open')
-
+})
 
 function submitArtistSearch() {
     $('button:submit').on('click', function(event) {
@@ -34,9 +34,7 @@ function submitArtistSearch() {
       $("#artistInfo").empty()
       $("#topTracks").empty()
       $("#eventsInfo").empty()
-      if (typeof artistId != 'undefined'){
-        $(".hovereffect").empty()
-      }
+      // $("#similarArtists").empty()
       event.preventDefault()
       let artist_name = $('#artist_name').val()
       getArtistData(artist_name)

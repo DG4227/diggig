@@ -343,7 +343,8 @@ th {
   }
   a,
   a:visited {
-    text-decoration: underline;
+    text-decoration: none;
+    color: #ff6666 ;
   }
   a[href]:after {
     content: " (" attr(href) ")";

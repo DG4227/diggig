@@ -17,7 +17,7 @@ function displayAllEvents(){
     artist.events.forEach((event)=>displayEvent(event))
   }
   else{
-    $('#eventsInfo').append(`<h3>No recent tours found!</h3>`)
+    $('#eventsInfo').append(`<h3>No upcoming events found!</h3>`)
   }
 }
 
@@ -34,11 +34,11 @@ function organizeSimilar(obj){
       organizedSimilar.artists.push({name:artist.name, imgUrl:artist.images[1].url, listenUrl:artist.external_urls.spotify})
     }})
   organizedSimilar.artists = organizedSimilar.artists.slice(0,12)
+  similarData=[]
 }
 
 function displaySimilarArtists(){
-  $("#clear").empty()
-  $("#clear").append(`<h3>Similar Artists</h3>`)
+  $("#clear").html("<h3>Similar Artists</h3>")
   organizeSimilar(similarData)
   handle($("#similar"), organizedSimilar)
 }
@@ -59,7 +59,7 @@ function addContentToEvents(html){
 }
 
 function addContentToSimilar(html){
-  addContentTo("#similarArtists", html)
+  addContentTo("#clear", html)
 }
 
 function displayPlaylist(){
