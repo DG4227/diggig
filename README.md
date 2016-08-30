@@ -11,5 +11,7 @@ Javascript, Spotify API, Last.fm API, Bands in Town API
 
 ##Collaborators
 Daniel Gorman | 
+
 [Yichen Yang](https://github.com/yicheny001/) | ichenyy0701@gmail.com
+
 Julie Marin |
