@@ -1,13 +1,13 @@
 #Readme
-DigGig is a project completed at Flatiron School by students in the Full Stack Web Development June 2016 cohort.
+This is a project completed at Flatiron School by students in the Full Stack Web Development June 2016 cohort.
 
 ##DigGig
-DigGig is a single-page application that lets users find artist information, recent tour dates, similar artists, album information, and top tracks for your favorite artists.
+A single-page application that lets users find artist information, recent tour dates, similar artists, album information, and top tracks for your favorite artists!
 
-[screen](http://g.recordit.co/pizquA4WmO.gif)
+![screen](http://g.recordit.co/pizquA4WmO.gif)
 
 ##Built with
-Javascript, Spotify API, Last.fm API, Bands in Town API, 
+Javascript, Spotify API, Last.fm API, Bands in Town API
 
 ##Collaborators
 Daniel Gorman | 
