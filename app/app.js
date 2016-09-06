@@ -5,6 +5,17 @@ const store = {
 
 $(function(){
   fadeLandingOnLoad()
+  searchBarActions()
+  submitArtistSearch()
+  $('#search').removeClass('open')
+})
+
+function fadeLandingOnLoad() {
+  $('.brand').hide().fadeIn(1300)
+  $('center').hide().fadeIn(1300)
+}
+
+function searchBarActions(){
   $('a[href="#search"], #fixedbutton').on('click', function(event) {
     event.preventDefault();
     $('#search').addClass('open');
@@ -16,34 +27,26 @@ $(function(){
       $(this).removeClass('open');
     }
   });
-
-  submitArtistSearch()
-  $('#search').removeClass('open')
-})
-
-function submitArtistSearch() {
-    $('button:submit').on('click', function(event) {
-      // $.fn.fullpage.moveSectionDown()
-      $('#search').removeClass('open');
-      $("#artistInfo").empty()
-      $("#topTracks").empty()
-      $("#eventsInfo").empty()
-      $("#quotes").remove()
-      $("#clear").html("")
-      $('#artistAlbums').remove()
-      // $("#similarArtists").empty()
-      event.preventDefault()
-      let artist_name = $('#artist_name').val()
-      getArtistData(artist_name)
-      $('#artist_name').val("")
-      hideQuote()
-    })
 }
 
+function submitArtistSearch() {
+  $('button:submit').on('click', function(event) {
+    clearPreviousInfo()
+    event.preventDefault()
+    let artist_name = $('#artist_name').val()
+    getArtistData(artist_name)
+    $('#artist_name').val("")
+  })
+}
 
-function fadeLandingOnLoad() {
-  $('.brand').hide().fadeIn(1300)
-  $('center').hide().fadeIn(1300)
+function clearPreviousInfo(){
+  $('#search').removeClass('open');
+  $("#artistInfo").empty()
+  $("#topTracks").empty()
+  $("#eventsInfo").empty()
+  $("#quotes").remove()
+  $("#clear").html("")
+  $('#artistAlbums').remove()
 }
 
 function scrollTo() {
@@ -51,7 +54,6 @@ function scrollTo() {
     scrollTop: $("#artistInfo").offset().top -30
   }, 1000);
 }
-
 
 function getArtistData(artist) {
   var artistId
@@ -69,6 +71,9 @@ function spotifyIdAJAX(artist) {
     url: `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`,
     success: function(data) {
       setSpotifyIdIfExists(data)
+      let norm_name = data.artists.items[0].name
+      bandsInTownAJAX(norm_name)
+      lastFmAJAX(norm_name)
     },
     error: function() {
 
@@ -78,13 +83,19 @@ function spotifyIdAJAX(artist) {
 
 function setSpotifyIdIfExists(data) {
   if (data.artists.total > 0) {
-    artistId = data.artists.items[0].id
+    let artistId = data.artists.items[0].id
     artistIdData = data.artists.items[0]
-    spotifyArtistInfoAJAX(artistId)
+    sendAllSpotifyRequests(artistId)
   } else {
-    artistId = null
+    let artistId = null
     $("#artistInfo").append(`<h3 style="color:white;">No results found!</h3>`)
   }
+}
+
+function sendAllSpotifyRequests(artistId){
+  spotifyArtistInfoAJAX(artistId)
+  spotifyArtistTopTracksAJAX(artistId);
+  spotifySimilarArtists(artistId);
 }
 
 function spotifyArtistInfoAJAX(id) {
@@ -93,8 +104,7 @@ function spotifyArtistInfoAJAX(id) {
     url: `https://api.spotify.com/v1/artists/${id}/albums`,
     success: function(data) {
       albumData= data.items
-      spotifyArtistTopTracksAJAX(id);
-      spotifySimilarArtists(id);
+
     },
     error: function() {
 
@@ -114,13 +124,17 @@ function spotifySimilarArtists(id) {
   })
 }
 
+function ajaxAggregator(){
+
+}
+
 function spotifyArtistTopTracksAJAX(id) {
   return $.ajax({
     method: "GET",
     url: `https://api.spotify.com/v1/artists/${id}/top-tracks?country=US`,
     success: function(data) {
       artistTopTracks = data.tracks
-      bandsInTownAJAX(data.tracks[0].artists[0].name)
+      // bandsInTownAJAX(data.tracks[0].artists[0].name)
     },
     error: function() {
 
@@ -136,7 +150,6 @@ function bandsInTownAJAX(artist) {
       dataType: 'jsonp',
       success: function(data) {
         bitData = data
-        lastFmAJAX(artist)
       },
       error: function() {
 
